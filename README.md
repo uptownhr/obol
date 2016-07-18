@@ -3,6 +3,8 @@ Centralized server to management ssh access to servers
 
 If you are a developer, chances are that you management multiple servers and you give access to other developers. Normally, this is done through the developers sharing their public key and adding them to the authorized_keys file. 
 
+## Normally how access is given
+
 1. A friend/dev needs access
 2. You ask for their pub key
 3. Pub key is sent to you through slack/email/txt
@@ -11,8 +13,13 @@ If you are a developer, chances are that you management multiple servers and you
 We will simplify this process by creating a service that manages the authorized_keys file on all your servers. Now once you have their pub key, you can simply give access to 1 server or multiple servers through a simple control panel.
 
 
-New proposed steps
+## New proposed steps
 
 1. A friend/dev needs access
 2. You ask them to login and upload their pub key once
 3. Once their user is created, you can now give that pub key access to multiple servers.
+
+## How it works
+
+There is a central service that you can install anywhere. This service will maintain the list of servers and user public keys. There is a web interface for you to add in new servers to the pools and will be given options to assign user access to the servers in the pool.
+
