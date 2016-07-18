@@ -12,6 +12,7 @@ We will simplify this process by creating a service that manages the authorized_
 
 
 New proposed steps
+
 1. A friend/dev needs access
 2. You ask them to login and upload their pub key once
 3. Once their user is created, you can now give that pub key access to multiple servers.
