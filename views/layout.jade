@@ -20,9 +20,8 @@ html(lang='en')
             =user.profile.name || user.email
             | &nbsp;
           ul.dropdown-menu
-            if user.role == 'admin' 
-              li
-                a(href='/admin') Admin
+            li
+              a(href='/dashboard') Dashboard
             li
               a(href='/user/account') My Account
             li

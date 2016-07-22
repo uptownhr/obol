@@ -13,7 +13,7 @@ const upload = multer({ dest: path.join(__dirname, '../public/uploads') })
 const { Server, User, Post, File, Project, Product } = require('../models')
 
 router.get('/', function (req, res) {
-
+  res.render('admin/overview')
 })
 
 

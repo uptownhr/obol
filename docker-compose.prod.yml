@@ -1,0 +1,14 @@
+app:
+  build: ./
+  command: npm run dev-docker
+  links:
+  - redis
+  - mongo
+  environment:
+  - MONGODB=mongodb://mongo:27017/obol
+  - REDIS=redis://redis:6379
+  - VIRTUAL_HOST=obol.jlee.biz
+mongo:
+  image: mongo
+redis:
+  image: redis
