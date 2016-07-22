@@ -1,0 +1,59 @@
+{
+  "name": "hackable",
+  "version": "1.4.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "dev-docker": "npm install && npm run dev",
+    "test": "PORT=9999 TEST=true istanbul cover _mocha",
+    "posttest": "cat ./coverage/lcov.info | coveralls",
+    "test-watch": "PORT=9999 TEST=true nodemon --exec 'mocha --reporter spec --timeout 5000'",
+    "postversion": "git push && git push --tags",
+    "docker-mongo": "docker exec -it hackathonstarterlite_mongo_1 mongo",
+    "cover": "istanbul cover _mocha && cat ./coverage/lcov.info | coveralls"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.15.0",
+    "clipboard": "^1.5.10",
+    "connect-redis": "^3.0.2",
+    "cookie-parser": "^1.4.1",
+    "crypto": "0.0.3",
+    "express": "^4.13.4",
+    "express-flash": "0.0.2",
+    "express-session": "^1.13.0",
+    "express-validator": "^2.19.1",
+    "jade": "^1.11.0",
+    "lodash": "^4.6.1",
+    "moment": "^2.12.0",
+    "mongoose": "^4.4.5",
+    "multer": "^1.1.0",
+    "passport": "^0.3.2",
+    "passport-facebook": "^2.1.0",
+    "passport-github": "^1.1.0",
+    "passport-google-oauth": "^1.0.0",
+    "passport-instagram": "^1.0.0",
+    "passport-local": "^1.0.0",
+    "passport-oauth": "^1.0.0",
+    "passport-twitter": "^1.0.4",
+    "qs": "^6.1.0",
+    "remarkable": "^1.6.2",
+    "stripe": "^4.5.0",
+    "validator": "^5.2.0"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "coveralls": "^2.11.9",
+    "istanbul": "^0.4.3",
+    "mocha": "^2.4.5",
+    "nodemon": "^1.9.1",
+    "supertest": "^1.2.0"
+  },
+  "engines": {
+    "node": ">=6.0.0",
+    "npm": ">=3.8.6"
+  }
+}
