@@ -1,64 +1,26 @@
-[![Build Status](https://travis-ci.org/uptownhr/hackable.svg)](https://travis-ci.org/uptownhr/hackable)
-[![Dependency Status](https://david-dm.org/uptownhr/hackable.svg)](https://david-dm.org/uptownhr/hackable)
-[![devDependency Status](https://david-dm.org/uptownhr/hackable/dev-status.svg)](https://david-dm.org/uptownhr/hackable)
-[![Gitter chat](https://badges.gitter.im/uptownhr/hackable.png)](https://gitter.im/uptownhr/hackable)
-[![Coverage Status](https://coveralls.io/repos/github/uptownhr/hackable/badge.svg?branch=master)](https://coveralls.io/github/uptownhr/hackable?branch=master)
+# ssh-access-management
+Centralized server to management ssh access to servers
 
-# hackable
-Personal site starter for express developers.
+If you are a developer, chances are that you management multiple servers and you give access to other developers. Normally, this is done through the developers sharing their public key and adding them to the authorized_keys file. 
 
-Hackable comes pre-built with an admin that is easy to hack with your express chops. Hackable keeps things familiar and uses libraries common to express developers. No new API's to learn - no magic. 
+## Normally how access is given
 
-The goal of the project is to provide you with a hackable prototype that you can mold to your liking.
+1. A friend/dev needs access
+2. You ask for their pub key
+3. Pub key is sent to you through slack/email/txt
+4. You ssh in and add the ssh key to the authorized_keys file
 
-If you've been thinking about creating a personal site or a site for your project, give Hackable a shot!.
+We will simplify this process by creating a service that manages the authorized_keys file on all your servers. Now once you have their pub key, you can simply give access to 1 server or multiple servers through a simple control panel.
 
-## [Demo](http://hackable.penguin.ws)
 
-Admin Login: admin@admin.com / asdfasdf
+## New proposed steps
 
-To access admin, use pull-down menu once logged in as admin or go to /admin
+1. A friend/dev needs access
+2. You ask them to login and upload their pub key once
+3. Once their user is created, you can now give that pub key access to multiple servers.
 
-## Main Stack
-- Mongoose
-- Pug (previously known as Jade)
-- Passport
+## How it works
 
-## Features
-- Login
-  - Email / Password
-  - Twitter, Github, Facebook, Gmail
-- Admin
-  - Users
-  - Posts
-  - Projects
-  - Products
-  - Files
-- Website
-  - Landing Page
-    - Projects
-    - Products
-  - Blog
+There is a central service that you can install anywhere. This service will maintain the list of servers and user public keys. There is a web interface for you to add in new servers to the pools and will be given options to assign user access to the servers in the pool.
 
-## Getting Started
-The easiest way to get started and the workflow we recommend is using docker. Docker handles the service depencies for the application to run. For example, Mongodb and Redis will be started and connected to the application automaticlaly. You do not have to worry about installation steps or muddying your host machine with additional services. 
-
-If you have docker available, you can get started in two steps.
-
-### Steps
-1. git clone git@github.com:uptownhr/hackable
-2. cd hackable
-3. docker-compose up
-4. visit http://localhost:3000 on your browser *if running docker on osx/windows, you'll use the vbox IP instead of localhost
-
-### Docker Installation
-1. [install docker](https://docs.docker.com/engine/installation/)
-2. [install docker-compose](https://docs.docker.com/compose/install/)
-
-## Guides and Examples
-- [getting started without docker](docs/getting-started-without-docker.md)
-- [creating admin crud pages](docs/crud.md)
-- [adding passport oauth providers](docs/passport.md)
-- [docker basics](docs/docker.md)
-
-[all guides](docs)
+>>>>>>> origin/master
