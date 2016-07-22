@@ -12,7 +12,7 @@ const express = require('express'),
   cookieParser = require('cookie-parser'),
   moment = require('moment')
 
-require('./config/seed.js')
+//require('./config/seed.js')
 
 const RedisStore = require('connect-redis')(session)
 const app = express()

@@ -16,6 +16,12 @@ block content
             label Host
             input.form-control(type="text" name="host" placeholder="Hostname" value=server.host)
 
+      #field_username.field.row
+        .col-md-12
+          .form-group
+            label Username
+            input.form-control(type="text" name="username" placeholder="Username" value=server.username)
+
       if server.key
         .field.row
           .col-md-12
