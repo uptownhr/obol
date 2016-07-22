@@ -1,0 +1,49 @@
+extends layout
+block content
+  .dashhead
+    .dashhead-titles
+      h6.dashhead-subtitle Dashboards
+      h2.dashhead-title Servers
+    .btn-toolbar.dashhead-toolbar
+      .btn-group
+        a.btn.btn-primary-outline(href='/dashboard/server', type='button')
+          | Create New
+          span.icon.icon-plus
+  hr.m-t
+
+  .table-full
+    .table-responsive
+      table.table(data-sort='table')
+        thead
+          tr
+            th Host
+            th Status
+            th Owner
+            th Created
+            th Actions
+        tbody
+          if servers.length
+            each server in servers
+              tr
+                td
+                  =server.host
+                td
+                  =server.status
+                td
+                  =server._owner.profile.name
+                td
+                  =moment(server.created).format("YYYY-MM-DD")
+                td
+                  a.btn.btn-primary-outline.btn-sm(href='/dashboard/server/#{server._id}')
+                    | Edit
+                    span.icon.icon-pencil
+                  | &nbsp;
+                  a.btn.btn-primary-outline.btn-sm(href='/dashboard/server/delete/#{server._id}', data-remote='true', data-confirm='Are You Sure?')
+                    | Delete
+                    span.icon.icon-erase
+          else
+            tr
+              td(colspan=7, class="text-center")
+                | No servers found
+  .text-center
+    

@@ -74,43 +74,48 @@ body
                   li.nav-header Administrative
                   li
                     a(href='/auth/logout') Logout
+                  li
+                    a(href='/user/account') My Account
+                  li
+                    a(href='/dashboard/servers') Servers
                 br
 
-                ul.nav.nav-pills.nav-stacked
-                  li.nav-header User
-                  li
-                    a(href='/admin/users') Users
-                  li
-                    a(href='/admin/user') Add User
-                br
+                if user.role == 'admin'
+                  ul.nav.nav-pills.nav-stacked
+                    li.nav-header User
+                    li
+                      a(href='/admin/users') Users
+                    li
+                      a(href='/admin/user') Add User
+                  br
 
-                ul.nav.nav-pills.nav-stacked
-                  li.nav-header Blog
-                  li
-                    a(href='/admin/posts') Posts
-                  li
-                    a(href='/admin/post') Add Post
-                br
-                ul.nav.nav-pills.nav-stacked
-                  li.nav-header Project
-                  li
-                    a(href='/admin/projects') Projects
-                  li
-                    a(href='/admin/project') Add Project
-                br
-                ul.nav.nav-pills.nav-stacked
-                  li.nav-header Product
-                  li
-                    a(href='/admin/products') Products
-                  li
-                    a(href='/admin/product') Add Product
-                br
-                ul.nav.nav-pills.nav-stacked
-                  li.nav-header File
-                  li
-                    a(href='/admin/files') Files
-                  li
-                    a(href='/admin/file') Add File
+                  ul.nav.nav-pills.nav-stacked
+                    li.nav-header Blog
+                    li
+                      a(href='/admin/posts') Posts
+                    li
+                      a(href='/admin/post') Add Post
+                  br
+                  ul.nav.nav-pills.nav-stacked
+                    li.nav-header Project
+                    li
+                      a(href='/admin/projects') Projects
+                    li
+                      a(href='/admin/project') Add Project
+                  br
+                  ul.nav.nav-pills.nav-stacked
+                    li.nav-header Product
+                    li
+                      a(href='/admin/products') Products
+                    li
+                      a(href='/admin/product') Add Product
+                  br
+                  ul.nav.nav-pills.nav-stacked
+                    li.nav-header File
+                    li
+                      a(href='/admin/files') Files
+                    li
+                      a(href='/admin/file') Add File
 
 
               hr.visible-xs.m-t

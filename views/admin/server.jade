@@ -1,0 +1,67 @@
+extends layout
+block content
+  form(method="POST" action="/dashboard/server")
+    input(type="hidden" name="id" value=server._id)
+    .dashhead
+      .dashhead-titles
+        h6.dashhead-subtitle Dashboards
+        h2.dashhead-title Servers
+      .btn-toolbar.dashhead-toolbar
+        button.btn.btn-primary-outline Save Server
+    hr.m-t
+    section.content-header
+      #field_email.field.row
+        .col-md-12
+          .form-group
+            label Host
+            input.form-control(type="text" name="host" placeholder="Hostname" value=server.host)
+
+      if server.key
+        .field.row
+          .col-md-12
+            .form-group
+              label SSH Pub Key
+              textarea.form-control(rows=10, disabled=true)=server.key.public
+        .field.row
+          .col-md-12
+            .form-group
+              label Users with Access
+              table.table.table-striped.hover.table-bordered
+                tr
+                  th Name
+                  th Email
+                  th Access
+                  th Action
+                each user in users
+                  tr
+                    td=user.profile.name
+                    td=user.email
+                    td=server._users_with_access.indexOf(user._id) != -1 ? 'yes' : 'no'
+                    td
+                      if server._users_with_access.indexOf(user._id) != -1
+                        a.btn.btn-danger(href="/dashboard/server/#{server._id}/revoke/#{user._id}") Revoke
+                      else
+                        a.btn.btn-primary(href="/dashboard/server/#{server._id}/grant/#{user._id}") Grant
+
+block scripts
+  script(src="https://twitter.github.io/typeahead.js/releases/latest/typeahead.bundle.js")
+  script.
+    $(document).ready(function() {
+      var users_with_access = !{JSON.stringify(server._users_with_access)}
+      users_with_access = [{_id: 'asdfasdfasdf', email: 'email@email.com'}]
+
+      $("#add_user").typeahead({minLength: 2, highlight: true}, {
+        display: 'email',
+        source: function(query, syncResults, asyncResults){
+          console.log(query, syncResults, asyncResults)
+          syncResults(users_with_access)
+        }
+      })
+
+      $("#submit").on('click', function(e){
+        e.preventDefault()
+        var $input = $("#add_user")
+        var value = $input.val()
+        $.post('/dashboard/server/add-user-access', {id: value})
+      })
+    })

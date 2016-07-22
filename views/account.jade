@@ -13,9 +13,9 @@ block content
       .col-sm-8
         input#email.form-control(type="text" name="email" placeholder="joe@doe.com" value="#{user.email || ''}")
     .form-group
-      label.col-sm-2(for="email" control-label) Email
+      label.col-sm-2(for="pubKey" control-label) Public Key
       .col-sm-8
-        textarea#pubKey.form-control(name="pubKey")
+        textarea#pubKey.form-control(name="pubKey" rows=10)
           | #{user.pubKey || ''}
     .form-group
       .col-sm-offset-2.col-sm-8

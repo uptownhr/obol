@@ -9,7 +9,7 @@ app:
   - redis
   - mongo
   environment:
-  - MONGODB=mongodb://mongo:27017/hackathon
+  - MONGODB=mongodb://mongo:27017/obol
   - REDIS=redis://redis:6379
   - VIRTUAL_HOST=obol.docker
 mongo:

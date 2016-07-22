@@ -9,6 +9,6 @@ app.use('/', controllers.Home)
 app.use('/blog', controllers.Post)
 app.use('/auth', controllers.Auth)
 app.use('/user', passport.isAuthenticated, controllers.User)
-app.use('/admin', passport.isAuthenticated, passport.isAdmin, controllers.Admin)
+app.use('/dashboard', passport.isAuthenticated, controllers.Admin)
 
 module.exports = app
