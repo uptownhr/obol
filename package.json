@@ -12,7 +12,7 @@
     "postversion": "git push && git push --tags",
     "docker-mongo": "docker exec -it hackathonstarterlite_mongo_1 mongo",
     "cover": "istanbul cover _mocha && cat ./coverage/lcov.info | coveralls",
-    "deploy": "docker-compose build && docker-compose -f docker-compose.prod.yml up -d"
+    "deploy": "docker-compose build && docker-compose -f docker-compose.prod.yml up -d && docker-compose logs"
   },
   "author": "",
   "license": "ISC",
