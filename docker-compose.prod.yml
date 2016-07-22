@@ -7,6 +7,16 @@ app:
   - MONGODB=mongodb://mongo:27017/obol
   - REDIS=redis://redis:6379
   - VIRTUAL_HOST=obol.jlee.biz
+job:
+  build: ./
+  command: npm run job
+  links:
+  - redis
+  - mongo
+  environment:
+  - MONGODB=mongodb://mongo:27017/obol
+  - REDIS=redis://redis:6379
+  - VIRTUAL_HOST=obol.jlee.biz
 mongo:
   image: mongo
 redis:

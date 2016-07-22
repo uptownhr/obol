@@ -36,6 +36,7 @@ router.get('/server/:id/grant/:user_id', co(function *(req, res) {
   let server = yield Server.findOne({_id: id})
 
   server._users_with_access.addToSet(user_id)
+  server.status = 'pending'
   server.save( function(err){
     if(err) {
       console.log(err)
@@ -47,21 +48,22 @@ router.get('/server/:id/grant/:user_id', co(function *(req, res) {
   })
 }))
 
-router.get('/server/:id/grant/:user_id', co(function *(req, res) {
+router.get('/server/:id/revoke/:user_id', co(function *(req, res) {
   const { id, user_id } = req.params
 
   let server = yield Server.findOne({_id: id})
-
-  server._users_with_access.addToSet(user_id)
-  server.save( function(err){
+  server.status = 'pending'
+  server._users_with_access.pull(user_id)
+  server.save(function(err){
     if(err) {
       console.log(err)
-      req.flash('errors', [{ msg: 'Error granting user' }])
+      req.flash('errors', [{ msg: 'Error revoking user' }])
       return res.redirect('/dashboard/server/' + id)
     }
-    req.flash('success', [{ msg: 'User granted' }])
+    req.flash('success', [{ msg: 'User revoked' }])
     return res.redirect('/dashboard/server/' + id)
   })
+
 }))
 
 router.post('/server', co(function *(req, res) {
