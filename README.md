@@ -22,5 +22,3 @@ We will simplify this process by creating a service that manages the authorized_
 ## How it works
 
 There is a central service that you can install anywhere. This service will maintain the list of servers and user public keys. There is a web interface for you to add in new servers to the pools and will be given options to assign user access to the servers in the pool.
-
->>>>>>> origin/master
